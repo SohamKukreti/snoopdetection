@@ -15,7 +15,8 @@ net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 confi = 0.5
 thresh = 0.5
 ln = net.getLayerNames()
-ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+layer_indexes = net.getUnconnectedOutLayers().flatten()
+ln = [ln[i - 1] for i in layer_indexes]
 
 
 # if you want to use webcam insted of video uncomment below line and comment line 24 
